@@ -22,6 +22,7 @@ def create_model(shape, nb_actions):
     model.add(Dense(32))
     model.add(Activation('relu'))
     model.add(Dense(nb_actions, activation='linear'))
+    return model
 
 def main():
     # OPTIONS
@@ -41,6 +42,8 @@ def main():
     nb_actions = env.action_space.n
     model = create_model(shape=env.shape, nb_actions=nb_actions)
     print(model.summary())
+
+    print(env.reset())
 
     # Finally, we configure and compile our agent. You can use every built-in Keras optimizer and even the metrics!
     memory = SequentialMemory(limit=50000, window_length=TIME_STEP)

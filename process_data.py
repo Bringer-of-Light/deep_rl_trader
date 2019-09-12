@@ -2,8 +2,8 @@ import pandas as pd
 import talib
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
-import ta
-from ta import zigzag, money_flow_index
+# import ta
+# from ta import zigzag, money_flow_index
 
 class FeatureExtractor:
     def __init__(self, df):
@@ -79,16 +79,16 @@ class FeatureExtractor:
         ## ATR
         self.df['atr'] = talib.ATR(self.high, self.low, self.close, timeperiod=14)
 
-        ## STOCH momentum
-        self.df = ta.stochastic_oscillator_k(self.df)
-        self.df = ta.stochastic_oscillator_d(self.df, n=10)
+        # ## STOCH momentum
+        # self.df = ta.stochastic_oscillator_k(self.df)
+        # self.df = ta.stochastic_oscillator_d(self.df, n=10)
 
-        ## TRIX
-        self.df['trix'] = talib.TRIX(self.close, timeperiod=5)
-        self.df['trix_signal'] = ta.moving_average(self.df['trix'], n=3)
-        self.df['trix_hist'] = self.df['trix'] - self.df['trix_signal']
+        # ## TRIX
+        # self.df['trix'] = talib.TRIX(self.close, timeperiod=5)
+        # self.df['trix_signal'] = ta.moving_average(self.df['trix'], n=3)
+        # self.df['trix_hist'] = self.df['trix'] - self.df['trix_signal']
 
-        ## MFI
+        # ## MFI
 
-        self.df['mfi14'] = money_flow_index(self.df, 14)
+        # self.df['mfi14'] = money_flow_index(self.df, 14)
 
